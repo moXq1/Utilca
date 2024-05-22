@@ -31,14 +31,15 @@ console.log(app);
 // }
 if (!getApps().length) {
   app = admin.initializeApp(config);
-} else {
-  console.log(getApps().length);
-  console.log(getApp());
-  let apps = getApps();
-  apps.forEach((a) => deleteApp(a));
-  // deleteApp(app);
-  app = admin.initializeApp(config);
 }
+// else {
+//   console.log(getApps().length);
+//   console.log(getApp());
+//   let apps = getApps();
+//   apps.forEach((a) => deleteApp(a));
+//   // deleteApp(app);
+//   app = admin.initializeApp(config);
+// }
 
 export const database = app.database();
 
