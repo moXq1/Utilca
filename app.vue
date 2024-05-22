@@ -29,6 +29,7 @@ onMounted(() => {
 <style>
 /* min-width:48rem -> 1rem 10px
   max-width:112rem
+  fsfs
 */
 
 *,
