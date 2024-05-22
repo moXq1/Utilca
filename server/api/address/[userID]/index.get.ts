@@ -14,7 +14,6 @@ export default defineEventHandler(async (event) => {
   //@ts-ignore
   const addressRef = ref(database, `address/${userID}`);
 
-  console.log(database);
   try {
     let data = await get(addressRef);
     data = data.val();
@@ -23,6 +22,7 @@ export default defineEventHandler(async (event) => {
     }
     return dataToArr(data);
   } catch (e) {
+    console.log(e);
     throw createError({
       //@ts-ignore
       statusCode: e.statusCode || 400,

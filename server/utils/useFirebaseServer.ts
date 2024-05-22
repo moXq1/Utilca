@@ -1,6 +1,6 @@
 import { FirebaseApp } from "@firebase/app-types";
 import { initializeApp, getApps, getApp, deleteApp } from "firebase/app";
-import { getDatabase, ref, get } from "firebase/database";
+import { ref, get, getDatabase } from "firebase/database";
 import admin from "firebase-admin";
 
 //@ts-ignore
@@ -17,9 +17,6 @@ const config = {
   appId: process.env.appId,
 };
 
-let app;
-console.log(app);
-
 // if (!getApps().length) {
 //   console.log("fdfd");
 //   app = admin.initializeApp(config);
@@ -29,9 +26,24 @@ console.log(app);
 //   console.log(2121);
 //   app = getApp();
 // }
-if (!getApps().length) {
-  app = admin.initializeApp(config);
-}
+
+let app;
+// if (!getApps().length) {
+//   app = admin.initializeApp(config);
+// } else {
+//   app = getApp();
+// }
+
+// Access database
+// export const database = getDatabase(app);
+// if (!getApps().length) {
+//   app = admin.initializeApp(config);
+// }
+
+// const apps = getApps();
+// if (apps.length > 0) {
+//   app = apps[0]!;
+// }
 // else {
 //   console.log(getApps().length);
 //   console.log(getApp());
@@ -40,7 +52,8 @@ if (!getApps().length) {
 //   // deleteApp(app);
 //   app = admin.initializeApp(config);
 // }
-
+app = admin.initializeApp(config);
+// console.log(getApps());
 export const database = app.database();
 
 // console.log(database);
