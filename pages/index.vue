@@ -109,6 +109,7 @@ const {
 );
 
 if (err.value) {
+  console.log(err.value);
   error({ text: "Ошибка при получении адрессов" });
   addresses.value = [];
 } else {
