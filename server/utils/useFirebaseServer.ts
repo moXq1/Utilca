@@ -18,13 +18,21 @@ const config = {
 };
 
 let app;
+console.log(app);
+console.log(getApps().length);
+
 if (!getApps().length) {
   app = admin.initializeApp(config);
 } else {
   app = getApp();
-  deleteApp(app);
-  app = admin.initializeApp(config);
 }
+// if (!getApps().length) {
+//   app = admin.initializeApp(config);
+// } else {
+//   app = getApp();
+//   deleteApp(app);
+//   app = admin.initializeApp(config);
+// }
 
 export const database = app.database();
 
