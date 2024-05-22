@@ -14,6 +14,7 @@ export default defineEventHandler(async (event) => {
   //@ts-ignore
   const addressRef = ref(database, `address/${userID}`);
 
+  console.log(database);
   try {
     let data = await get(addressRef);
     data = data.val();

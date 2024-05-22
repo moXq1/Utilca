@@ -19,21 +19,29 @@ const config = {
 
 let app;
 console.log(app);
-console.log(getApps().length);
 
+// if (!getApps().length) {
+//   console.log("fdfd");
+//   app = admin.initializeApp(config);
+//   console.log(getApps());
+// } else {
+//   console.log(getApps());
+//   console.log(2121);
+//   app = getApp();
+// }
 if (!getApps().length) {
   app = admin.initializeApp(config);
 } else {
-  app = getApp();
+  console.log(getApps().length);
+  console.log(getApp());
+  let apps = getApps();
+  apps.forEach((a) => deleteApp(a));
+  // deleteApp(app);
+  app = admin.initializeApp(config);
 }
-// if (!getApps().length) {
-//   app = admin.initializeApp(config);
-// } else {
-//   app = getApp();
-//   deleteApp(app);
-//   app = admin.initializeApp(config);
-// }
 
 export const database = app.database();
+
+// console.log(database);
 
 export async function getAddresses(userID: string) {}
