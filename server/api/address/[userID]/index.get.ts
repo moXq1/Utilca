@@ -16,13 +16,10 @@ export default defineEventHandler(async (event) => {
 
   try {
     let data = await get(addressRef);
-
     data = data.val();
-
     if (!data) {
       return [];
     }
-
     return dataToArr(data);
   } catch (e) {
     throw createError({
