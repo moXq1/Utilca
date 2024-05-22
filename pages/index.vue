@@ -110,7 +110,7 @@ const {
 
 if (err.value) {
   console.log(err.value);
-  error({ text: "Ошибка при получении адрессов" });
+  error({ text: "Ошибка при получении адресов" });
   addresses.value = [];
 } else {
   addresses.value = data.value ?? [];

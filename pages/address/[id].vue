@@ -53,6 +53,13 @@
             </td>
           </tr>
         </thead>
+        <thead v-if="address" class="stable">
+          <tr>
+            <td colspan="8">
+              <Pill :address="address" />
+            </td>
+          </tr>
+        </thead>
         <thead v-if="tarifs.length > 0">
           <tr>
             <!-- <td colspan="1"></td> -->
@@ -444,7 +451,8 @@ html.dark .action-delete {
 .btns > *,
 .action-update,
 .new-tarif,
-.new-head {
+.new-head,
+.stable {
   background-color: var(--surface-1);
 
   border-color: var(--surface-3);
@@ -453,6 +461,21 @@ html.dark .action-delete {
   & :is(svg, line, path) {
     stroke: var(--link);
   }
+}
+
+.stable {
+  border: none !important;
+  color: var(--text-1);
+}
+
+.stable tr {
+  background-color: var(--surface-2);
+  /* border: none !important; */
+}
+.stable td {
+  /* border: none !important; */
+  padding: 1rem 0.5rem;
+  border-color: var(--surface-1);
 }
 
 .collapse,
@@ -471,7 +494,7 @@ main {
 }
 
 table {
-  border: 1px solid white;
+  /* border: 1px solid white; */
   border-collapse: collapse;
   width: 100%;
 
