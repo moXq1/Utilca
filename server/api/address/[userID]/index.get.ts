@@ -22,6 +22,7 @@ export default defineEventHandler(async (event) => {
     }
     return dataToArr(data);
   } catch (e) {
+    console.log(e);
     throw createError({
       //@ts-ignore
       statusCode: e.statusCode || 400,
