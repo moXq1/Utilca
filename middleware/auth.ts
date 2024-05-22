@@ -4,9 +4,9 @@ export default defineNuxtRouteMiddleware(async (to) => {
   if (!user) {
     return await navigateTo({
       path: "/register",
-      query: {
-        redirect: to.fullPath,
-      },
+      // query: {
+      //   redirect: to.fullPath,
+      // },
     });
   }
 });
