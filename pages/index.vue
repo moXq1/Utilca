@@ -27,21 +27,20 @@
 
   <main>
     <div v-if="!pending" class="container">
-      <Card
-        v-for="add in addresses"
-        :key="add.id"
-        :address="add"
-        :updateHandler="edit"
-        :deleteHandler="miniDel" />
+      <div class="item" v-for="add in addresses" :key="add.id">
+        <Card :address="add" :updateHandler="edit" :deleteHandler="miniDel" />
+      </div>
 
-      <div
-        class="pseudocard"
-        @click="
-          () => {
-            cModalTarget?.show();
-          }
-        ">
-        <h3>Новый адрес</h3>
+      <div class="item">
+        <div
+          class="pseudocard"
+          @click="
+            () => {
+              cModalTarget?.show();
+            }
+          ">
+          <h3>Новый адрес</h3>
+        </div>
       </div>
     </div>
 
@@ -232,10 +231,10 @@ async function deleteAddress(addr: Address) {
   padding-inline: 3ch;
   background-color: var(--surface-2);
   border-radius: 20px;
-
-  max-width: min-content;
-  height: 170px;
-  align-self: center;
+  height: 100%;
+  /* max-width: min-content; */
+  /* height: 170px; */
+  /* align-self: center; */
 
   border: 2px solid var(--surface-3);
   transition: all 0.2s ease;
@@ -292,23 +291,81 @@ html.dark .pseudocard:hover h3 {
 }
 
 main {
-  padding-inline: 32px;
+  /* padding-inline: 32px;
   margin-inline: auto;
   max-width: 1100px;
   width: 100%;
   margin-block-start: 40px;
   min-height: 0;
+  max-width: 65rem; */
 }
 
 .container {
-  gap: 1rem;
+  /* gap: 1rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 25px;
   margin-block-start: 10px;
-  padding-block: 2rem;
+  padding-block: 2rem; */
   /* display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); */
+}
+/**mb better styles */
+
+main {
+  max-width: 65rem;
+  margin-inline: max(50% - 65rem / 2, 1rem);
+  margin-block: 6rem;
+  container-type: inline-size;
+}
+
+.item {
+  height: auto;
+}
+
+.container {
+  --col-size: 125px;
+  display: grid;
+
+  gap: 1rem;
+
+  grid-template-columns: repeat(auto-fit, minmax(var(--col-size), 1fr));
+
+  @container (width >= calc(125px * 2 + 1rem)) {
+    .item {
+      grid-column: span 2;
+    }
+  }
+
+  @container (calc(125px * 4 + 3rem) < width < calc(125px * 6 + 5rem) ) {
+    .item:last-child:nth-child(odd) {
+      grid-column: 2 / span 2;
+    }
+  }
+
+  @container (calc(125px * 6 + 5rem) < width < calc(125px * 8 + 7rem)) {
+    .item:nth-child(3n + 4):last-child {
+      grid-column: 3 / 5;
+    }
+
+    &:has(:nth-child(3n + 5):last-child) > :nth-last-child(2) {
+      grid-column: 2 / 4;
+    }
+  }
+
+  @container (calc(125px * 8 + 7rem) < width < calc(125px * 10 + 9rem)) {
+    .item:nth-child(4n + 5):last-child {
+      grid-column: 4 / 6;
+    }
+
+    &:has(:nth-child(4n + 6):last-child) > :nth-last-child(2) {
+      grid-column: 3 / 5;
+    }
+
+    &:has(:nth-child(4n + 7):last-child) > :nth-last-child(3) {
+      grid-column: 2 / 4;
+    }
+  }
 }
 </style>

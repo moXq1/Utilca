@@ -30,8 +30,8 @@ a {
   background-color: var(--surface-2);
   border-radius: 20px;
   text-decoration: none;
-  width: calc(31% + 3px);
-  min-width: 250px;
+  /* width: calc(31% + 3px); */
+  /* min-width: 250px; */
   flex: 1;
   border: 2px solid var(--surface-3);
   transition: all 0.2s ease;
